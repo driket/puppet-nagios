@@ -1,0 +1,18 @@
+#
+# THIS FILE IS MANAGED BY PUPPET
+# <%= file %>
+#
+
+<% for site in @sites %>
+define service{
+ host_name <%= site["hostname"] %>
+ service_description <%= site["url"] %>
+ <% if site["warning"] and site["critical"] -%>
+ check_command  check_website_response!"<%= site["url"] %>"!<%= site["warning"] %>!<%= site["critical"] %>
+ <% else -%>
+ check_command  check_website_response!"<%= site["url"] %>"!1000!2000
+ <% end -%>
+ use   generic-service
+ notification_interval 1440
+}
+<% end %>

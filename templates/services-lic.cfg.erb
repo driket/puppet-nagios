@@ -1,0 +1,14 @@
+#
+# THIS FILE IS MANAGED BY PUPPET
+# <%= file %>
+#
+
+<% for service in @services %>
+define service{
+ host_name <%= service["hostname"] %>
+ service_description <%= service["description"] %>
+ check_command  <%= service["check_command"] %>
+ use   generic-service
+ notification_interval 1440
+}
+<% end %>
