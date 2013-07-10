@@ -1,4 +1,3 @@
-
 define mv_nagios::config::services ($services = ["localhost"]) {
 	require('mv_nagios::packages')
 	require('mv_nagios')
