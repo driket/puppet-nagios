@@ -10,7 +10,7 @@ define mv_nagios::config::hosts ($hosts = [{ hostname => "localhost", fqdn => "l
         mode => "0644",
         owner => 'root',
         group => 'root',
-		require => Package["mv_nagios"],
+		require => Package["nagios3","sendemail","netcat"],
         notify => Service["mv_nagios"],
     }
 }

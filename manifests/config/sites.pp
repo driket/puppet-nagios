@@ -9,7 +9,7 @@ define mv_nagios::config::sites ($sites = ["localhost"]) {
         mode => "0644",
         owner => 'root',
         group => 'root',
-		require => Package["mv_nagios"],
+		require => Package["nagios3","sendemail","netcat"],
         notify => Service["mv_nagios"],
     }
 }
